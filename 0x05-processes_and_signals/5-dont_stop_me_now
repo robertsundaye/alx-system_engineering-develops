@@ -2,8 +2,11 @@
 #  a Bash script that stops 4-to_infinity_and_beyond process.
 # You must use kill
 
+# geting the PID of the program
 id=$(pgrep "bash ./4-to_infinity_and_beyond" -f)
-if [ -n '$id" ]
+
+# terminate the infinate process
+if [ -n "$id" ]
 then
  kill -ls "$id"
 fi 
