@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+#Write a Bash script that displays listening ports
+
+echo "Listening prots:"
+echo "PID program Name Port"
+
+for port in $(netstat -tln | awk '{print $4}' | grep -Eo "[0-9]{1,5}$"); do
+	pid=$(lsof -i :$port | awk '{print $2}' | tail -n 1)
+	program=$(ps -p $pid -o comm=)
+	echo "$pid $program $port"
+done
